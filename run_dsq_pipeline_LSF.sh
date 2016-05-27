@@ -42,7 +42,7 @@ bfq2=`basename ${fq2}`
 
 b0=`echo ${bfq1} | grep -P '^[a-zA-Z0-9\_]*_R1' -o`
 b=${b0/_R1/}
-sed "s|fName|${b}|g;s|fastq1|${fq1}|g;s|fastq2|${fq2}|g;s|bamFileName|${b}|g;s|numCellsNum|${numCells[l]}|g;s|refFasta|${refFastaPath}|g;s|metaData|${metaDataDir}|g;s|basedir|${baseDir}|g" < run_Alignment.sh > run_Alignment_${b}.sh
+sed "s|fName|${b}|g;s|fastq1|${fq1}|g;s|fastq2|${fq2}|g;s|bamFileName|${b}|g;s|numCellsNum|${numCells[l]}|g;s|refFasta|${refFastaPath}|g;s|metaDataLoc|${metaDataDir}|g;s|basedir|${baseDir}|g" < run_Alignment.sh > run_Alignment_${b}.sh
 chmod +x run_Alignment_${b}.sh
 mv run_Alignment_${b}.sh run_files
 
