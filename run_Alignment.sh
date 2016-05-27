@@ -12,7 +12,7 @@ fq1=fastq1
 fq2=fastq2
 numCells=numCellsNum
 reference_fasta=refFasta
-metaDataDir=metaData
+metaDataDir=metaDataLoc
 toolsPath=/broad/mccarroll/software/dropseq/prod
 baseDir=basedir
 
