@@ -1,19 +1,24 @@
 #!/bin/bash
 
+# script to align Drop-seq data
+# usage : ./run_dsq_alignment.sh [metaDataDir] [fastq1] [fastq2] [outName]
+# produces a bam file named outName.bam
+
 . /broad/tools/scripts/useuse
 
 use Samtools
 use Java-1.8
 use BWA
 
-fastQ1=$1
-fastQ2=$2
-outName=$3
+metaDataDir=$1
+fastQ1=$2
+fastQ2=$3
+outName=$4
+
 
 
 rootDir=$(dirname $(readlink -e `pwd`/))
-metaDataDir=/broad/mccarroll/software/metadata/individual_reference/GRCh37.75_GRCm38.81/m38_transgene
-metaDataName=m38_transgene
+metaDataName=`basename $metaDataDir`
 refSequence=${metaDataDir}/${metaDataName}.fasta
 baseQuality=10
 picardLoc=/seq/software/picard/current/bin
