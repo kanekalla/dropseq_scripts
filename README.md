@@ -5,5 +5,5 @@
 qsub -v nextseq_loc=/ahg/regev_nextseq/Data/<FOLDER>,fastq_loc=<PATH> demultiplex.sh
 
 1. Make sure you have the following in your path,
-..* R-3.2, Java-1.8, Samtools, Picard-Tools
+   * R-3.2, Java-1.8, Samtools, Picard-Tools
 2. Make sure that your local R repository has the package "ineq"
