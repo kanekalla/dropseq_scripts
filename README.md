@@ -1,8 +1,10 @@
 
 
-### Demultiplexing command
+### Demultiplexing
 
 qsub -v nextseq_loc=/ahg/regev_nextseq/Data/<FOLDER>,fastq_loc=<PATH> demultiplex.sh
+
+### Aligning and quantifying
 
 1. Check that you have the following in your path,
    * R-3.2, Java-1.8, Samtools, Picard-Tools
