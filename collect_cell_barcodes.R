@@ -1,6 +1,6 @@
 
-
 collect_cell_barcodes <- function(filename,Ncells){ 
+# Records the top Ncells barcodes, and writes them to a text file 
 
 data = read.table(file=filename)
 barcodes = data$V2[1:Ncells]
