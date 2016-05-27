@@ -1,8 +1,9 @@
 #!/bin/bash
 
 
-#Author : Karthik Shekhar, 05/26/2016
-#Master file for invoking Drop-seq pipline
+# Author : Karthik Shekhar, 05/26/2016
+# Master file for invoking Drop-seq pipline 
+# LSF invocation
 
 #Values depend on sample
 refFastaPath=/broad/mccarroll/software/metadata/individual_reference/GRCh37.75_GRCm38.81/m38_transgene/m38_transgene.fasta
