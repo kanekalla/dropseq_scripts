@@ -12,11 +12,12 @@ fq1=fastq1
 fq2=fastq2
 numCells=numCellsNum
 reference_fasta=refFasta
+metaDataDir=metaData
 toolsPath=/broad/mccarroll/software/dropseq/prod
 baseDir=basedir
 
 # STEP 1 : Alignment
-${baseDir}/scripts/run_dsq_alignment.sh ${fq1} ${fq2} ${b}
+${baseDir}/scripts/run_dsq_alignment.sh ${metaDataDir} ${fq1} ${fq2} ${b}
 
 mv ${baseDir}/bams/${bamName}.bam ${baseDir}/bams/${bamName}_old.bam
 mv ${baseDir}/bams/${bamName}.bam.bai ${baseDir}/bams/${bamName}_old.bam.bai
