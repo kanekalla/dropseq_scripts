@@ -7,6 +7,7 @@
 
 #Values depend on sample
 refFastaPath=/broad/mccarroll/software/metadata/individual_reference/GRCh37.75_GRCm38.81/m38_transgene/m38_transgene.fasta
+metaDataDir=/broad/mccarroll/software/metadata/individual_reference/GRCh37.75_GRCm38.81/m38_transgene
 numCells=(1500 3000 3000) 
 queue=regevlab
 baseDir=`readlink -f ..`
