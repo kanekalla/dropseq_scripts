@@ -3,11 +3,12 @@
 #set -x
 #set -o errexit
 
-#Author : Karthik Shekhar, 05/05/2016
+#Author : Karthik Shekhar, 05/26/2016
 #Master file for invoking Drop-seq pipline
 
+#Depends on sample
 refFastaPath=/broad/mccarroll/software/metadata/individual_reference/GRCh37.75_GRCm38.81/m38_transgene/m38_transgene.fasta
-numCells=(1500 3000 3000)
+numCells=(1500 3000 3000) 
 queue=regevlab
 baseDir=`readlink -f ..`
 
