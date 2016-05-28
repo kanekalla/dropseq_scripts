@@ -4,8 +4,11 @@
 # Author : Karthik Shekhar, 05/26/2016
 # Master file for invoking Drop-seq pipline 
 # LSF invocation
+# usage : ./run_dsq_pipeline_LSF.sh [fastqPath]
+# assumes : files are organized as $fastqPath/SampleX_R1.fastq.gz and $fastqPath/SampleX_R2.fastq.gz
 
 #Values depend on sample
+fastqPath=$1
 refFastaPath=/broad/mccarroll/software/metadata/individual_reference/GRCh37.75_GRCm38.81/m38_transgene/m38_transgene.fasta
 metaDataDir=/broad/mccarroll/software/metadata/individual_reference/GRCh37.75_GRCm38.81/m38_transgene
 numCells=(1500 3000 3000) 
@@ -27,7 +30,7 @@ mkdir -p ../UMI_DGE
 mkdir -p ../reads_DGE
 
 l=0
-for fq1 in ../Fastqs/Data/*R1*;
+for fq1 in $fastqPath/*R1*;
 do
 
 #STEP 1 : CREATE NEW INSTANCE OF RUN FILE FOR SAMPLE
