@@ -4,8 +4,8 @@
 #$ -P regevlab
 
 #$ -l m_mem_free=150g
-#$ -e /broad/hptmp/user/error.err
-#$ -o /broad/hptmp/user/out.log
+#$ -e error.err
+#$ -o out.out
 
 source /broad/software/scripts/useuse 
 reuse -q Samtools
