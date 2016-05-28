@@ -1,9 +1,8 @@
 #!/bin/bash
 
-
 # Author : Karthik Shekhar, 05/26/2016
 # Master file for invoking Drop-seq pipline 
-# LSF invocation
+# SGE invocation
 # usage : ./run_dsq_pipeline_LSF.sh [fastqPath]
 # assumes : files are organized as $fastqPath/SampleX_R1.fastq.gz and $fastqPath/SampleX_R2.fastq.gz
 
