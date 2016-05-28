@@ -76,12 +76,12 @@ bamReadsFile=${baseDir}/bam_reads/${bamName}.reads.txt
 #temp1=`echo ${bamReadsFile} | sed 's:\/:\\\/:g'`
 #temp2=`echo ${baseDir} | sed 's:\/:\\\/:g'`\\\/bam_reads\\\/${bamName}
 sed "s|fileName|${bamReadsFile}/g;s|figName|${baseDir}|g" < ${baseDir}/scripts/DropSeqCumuPlot.R > ${baseDir}/scripts/run_files/DropSeqCumuPlot_${bamName}.R
-R CMD BATCH ${baseDir}/scripts/run_files/DropSeqCumuPlot_${bamName}.R DropSeqCumuPlot_${bamName}.out
+R CMD BATCH ${baseDir}/scripts/run_files/DropSeqCumuPlot_${bamName}.R ${baseDir}/bsub_logs/DropSeqCumuPlot.${bamName}.out
 
 readsTable=${bamName}.reads.txt
 numCells=`cat ${baseDir}/bam_reads/${bamName}_numCells.txt` 
 sed "s|filename_input|${readsTable}|g;s|Ncells_input|${numCells}|g" < ${baseDir}/scripts/collect_cell_barcodes.R > ${baseDir}/scripts/run_files/collect_cell_barcodes.${bamName}.R
-R CMD BATCH ${baseDir}/scripts/run_files/collect_cell_barcodes.${bamName}.R
+R CMD BATCH ${baseDir}/scripts/run_files/collect_cell_barcodes.${bamName}.R ${baseDir}/bsub_logs/collect_cell_barcodes.${bamName}.Rout
 
 # STEP 6: DGE UMIs
 ${toolsPath}/DigitalExpression I=${baseDir}/bams/${bamName}.bam \
