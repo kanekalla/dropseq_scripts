@@ -1,21 +1,22 @@
 #!/bin/bash
+
 #$ -cwd
 #$ -q long
 #$ -P regevlab
-
 #$ -l m_mem_free=150g
-#$ -e error.err
-#$ -o out.out
+#$ -N karthik_dropseq
+#$ -pe smp 4 -R y
+#$ -V
+
 
 source /broad/software/scripts/useuse 
-reuse -q Samtools
-reuse -q Java-1.8
-reuse -q BWA
+use Java-1.7
+use Python-2.7
+use R-3.0
+use Samtools
 
 # Author: Karthik Shekhar, 05/26/16
 # Template file for executing Drop-seq alignment/quantification steps
-
-
 
 set -x
 
@@ -124,7 +125,7 @@ $BASEDIR/DropSeqStandardAnalysis \
 --estimatedNumBeads $((numCells*20)) \
 --report_dir ${baseDir}/QC_files \
 --pointSize=0.75 \
---batchSystem local \
+--batchSystem sge \
 --beadSynthesisErrorDetail ${baseDir}/synthesis_err_stats/${bamName}.synthesis_stats.txt \
 --cellTag XC \
 --cellTagCollapsed ZC \
