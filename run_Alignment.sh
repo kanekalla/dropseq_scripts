@@ -4,7 +4,6 @@
 # Template file for executing Drop-seq alignment/quantification steps
 
 set -x
-set -o errexit
 
 b=fName
 bamName=bamFileName
