@@ -1,7 +1,21 @@
 #!/bin/bash
+#$ -cwd
+#$ -q long
+#$ -P regevlab
+
+#$ -l m_mem_free=150g
+#$ -e /broad/hptmp/user/error.err
+#$ -o /broad/hptmp/user/out.log
+
+source /broad/software/scripts/useuse 
+reuse -q Samtools
+reuse -q Java-1.8
+reuse -q BWA
 
 # Author: Karthik Shekhar, 05/26/16
 # Template file for executing Drop-seq alignment/quantification steps
+
+
 
 set -x
 
