@@ -44,12 +44,14 @@ bfq2=`basename ${fq2}`
 
 b0=`echo ${bfq1} | grep -P '^[a-zA-Z0-9\_]*_R1' -o`
 b=${b0/_R1/}
-sed "s|fName|${b}|g;s|fastq1|${fq1}|g;s|fastq2|${fq2}|g;s|bamFileName|${b}|g;s|numCellsNum|${numCells[l]}|g;s|refFasta|${refFastaPath}|g;s|metaDataLoc|${metaDataDir}|g;s|basedir|${baseDir}|g" < run_Alignment.sh > run_Alignment_${b}.sh
-chmod +x run_Alignment_${b}.sh
-mv run_Alignment_${b}.sh run_files
+sed "s|fName|${b}|g;s|fastq1|${fq1}|g;s|fastq2|${fq2}|g;s|bamFileName|${b}|g;s|numCellsNum|${numCells[l]}|g;s|refFasta|${refFastaPath}|g;s|metaDataLoc|${metaDataDir}|g;s|basedir|${baseDir}|g" < run_Alignment_SGE.sh > run_Alignment_SGE_${b}.sh
+errfile=${baseDir}/bsub_logs/${b}.err
+outfile=${baseDir}/bsub_logs/${b}.out
+sed -i "s|error.err|${errfile}|g;s|out.out|${outfile}|g" run_Alignment_SGE_${b}.sh
+chmod +x run_Alignment_SGE_${b}.sh
+mv run_Alignment_SGE_${b}.sh run_files
 
-bsub -oo ../bsub_logs/${b}.pipe.log -eo ../bsub_logs/${b}.pipe.err -q ${queue} -R "rusage[mem=150]span[hosts=1]" \
-./run_files/run_Alignment_${b}.sh
+qsub run_files/run_Alignment_SGE_${b}.sh
 
 echo ${numCells[l]}
 l=`expr $l + 1`
