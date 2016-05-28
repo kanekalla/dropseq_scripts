@@ -51,7 +51,7 @@ sed -i "s|error.err|${errfile}|g;s|out.out|${outfile}|g" run_Alignment_SGE_${b}.
 chmod +x run_Alignment_SGE_${b}.sh
 mv run_Alignment_SGE_${b}.sh run_files
 
-qsub run_files/run_Alignment_SGE_${b}.sh
+qsub run_files/run_Alignment_SGE_${b}.sh -e ${baseDir}/bsub_logs/${b}.err -o ${baseDir}/bsub_logs/${b}.out
 
 echo ${numCells[l]}
 l=`expr $l + 1`
