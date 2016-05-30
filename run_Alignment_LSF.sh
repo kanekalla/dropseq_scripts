@@ -77,9 +77,8 @@ bamReadsFile=${baseDir}/bam_reads/${bamName}.reads.txt
 sed "s|fileName|${bamReadsFile}|g;s|figName|${baseDir}/bam_reads/${bamName}|g" < ${baseDir}/scripts/DropSeqCumuPlot.R > ${baseDir}/scripts/run_files/DropSeqCumuPlot_${bamName}.R
 R CMD BATCH ${baseDir}/scripts/run_files/DropSeqCumuPlot_${bamName}.R ${baseDir}/bsub_logs/DropSeqCumuPlot.${bamName}.out
 
-readsTable=${bamName}.reads.txt
 numCells=`cat ${baseDir}/bam_reads/${bamName}_numCells.txt` 
-sed "s|filename_input|${readsTable}|g;s|Ncells_input|${numCells}|g" < ${baseDir}/scripts/collect_cell_barcodes.R > ${baseDir}/scripts/run_files/collect_cell_barcodes.${bamName}.R
+sed "s|filename_input|${bamReadsFile}|g;s|Ncells_input|${numCells}|g" < ${baseDir}/scripts/collect_cell_barcodes.R > ${baseDir}/scripts/run_files/collect_cell_barcodes.${bamName}.R
 R CMD BATCH ${baseDir}/scripts/run_files/collect_cell_barcodes.${bamName}.R ${baseDir}/bsub_logs/collect_cell_barcodes.${bamName}.Rout
 
 # STEP 6: DGE UMIs
