@@ -1,22 +1,33 @@
 #!/bin/bash
 
+#$ -cwd
+#$ -q long
+#$ -P regevlab
 
-id=P17_Retina
-bcl_path=/ahg/regev_nextseq/Data/160422_NB501164_0150_AH3MVGBGXY
-fastq_path=H3MVGBGXY/outs/fastq_path
+#$ -e error.err
+#$ -o out.log
 
-#comma seperated
 
-transcriptome_path=/ahg/regevdata/projects/10X_runs/REFERENCES/refdata-cellranger-1.0.0/mm10
+source /broad/software/scripts/useuse
+reuse UGER
+export PATH=/seq/regev_genome_portal/SOFTWARE/10X/cellranger-1.1.0:$PATH
 
-echo $id
+id=my_id
+# ./<FLOWCELLID>/outs/fastq_path
+fastq_path=path_to_fastq 
 
-cellranger demux --run=${bcl_path}
+#comma seperated sample barcodes
+bcs=comma_sep_barcodes
+transcriptome_path=path_to_trans
 
 cellranger run --id=${id} \
 	       --transcriptome=${transcriptome_path} \
 	       --fastqs=${fastq_path} \
-	       --indices=SI-3A-C1,SI-3A-C2,SI-3A-C3
+	       --jobmode=sge \
+	       --indices=${bcs} \
+	       --maxjobs=8 \
+	       --mempercore=16 \
+	       #--uiport=3600
 				       	
 			
 	
