@@ -14,11 +14,14 @@ export PATH=/seq/regev_genome_portal/SOFTWARE/10X/cellranger-1.1.0:$PATH
 
 id=my_id
 # ./<FLOWCELLID>/outs/fastq_path
+bclPath=path_to_bcl
 fastq_path=path_to_fastq 
-
 #comma seperated sample barcodes
 bcs=comma_sep_barcodes
 transcriptome_path=path_to_trans
+
+# outputs to current directory
+cellranger demux --run=${bclPath}
 
 cellranger run --id=${id} \
 	       --transcriptome=${transcriptome_path} \
