@@ -15,13 +15,15 @@ n=`expr ${#run_ids[@]} - 1`
 fastq_path=`basename $bcl_path | cut -f 4 -d'_'`
 fastq_path=./${fastq_path/A/}/outs/fastq_path
 
-# cell ranger run
+# cell ranger demux
+sed "s|path_to_bcl|${bcl_path}|g;s|path_to_cellranger|${cellranger_path}|g" < /home/unix/karthik/repo/dropseq_scripts/10X/run_10X.sh > run_10X_${fastq_path/A/}.sh
 
+# cell ranger run
 for ((i==0; i<=$n; i++)
 do
   run_id=${run_ids[$i]}
   barcode=${bcs[$i]}
-  sed "s|path_to_bcl|${bcl_path}|g;s|my_id|${run_id}|g;s|path_to_fastq|${fastq_path}|g" < /home/unix/karthik/repo/dropseq_scripts/10X/run_10X.sh > run_10X_${run_id}.sh
+  sed "s|my_id|${run_id}|g;s|path_to_fastq|${fastq_path}|g" < /home/unix/karthik/repo/dropseq_scripts/10X/run_10X.sh > run_10X_${run_id}.sh
   sed -i "s|path_to_cellranger|${cellranger_path}|g" run_10X_${run_id}.sh
   sed -i "s|barcode|${barcode}|g;s|path_to_trans|${trans_path}|g" run_10X_${run_id}.sh
   sed -i "s|error.err|${run_id}.10X.err|g;s|out.log|${run_id}.10X.out|g" run_10X_${run_id}.sh
