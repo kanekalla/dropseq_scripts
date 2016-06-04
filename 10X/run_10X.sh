@@ -13,7 +13,6 @@ source /broad/software/scripts/useuse
 cellranger_path=path_to_cellranger
 id=my_id
 # ./<FLOWCELLID>/outs/fastq_path
-bclPath=path_to_bcl
 fastq_path=path_to_fastq 
 #comma seperated sample barcodes
 bcs=barcode
