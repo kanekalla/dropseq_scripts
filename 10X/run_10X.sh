@@ -3,34 +3,30 @@
 #$ -cwd
 #$ -q long
 #$ -P regevlab
-
-#$ -e error.err
-#$ -o out.log
+#$ -e qsub_logs/error.err
+#$ -o qsub_logs/out.log
 
 
 source /broad/software/scripts/useuse
-reuse UGER
-export PATH=/seq/regev_genome_portal/SOFTWARE/10X/cellranger-1.1.0:$PATH
 
+# Variables defined by wrapper script
+cellranger_path=path_to_cellranger
 id=my_id
 # ./<FLOWCELLID>/outs/fastq_path
 bclPath=path_to_bcl
 fastq_path=path_to_fastq 
 #comma seperated sample barcodes
-bcs=comma_sep_barcodes
+bcs=barcode
 transcriptome_path=path_to_trans
 
-# outputs to current directory
-cellranger demux --run=${bclPath}
-
-cellranger run --id=${id} \
-	       --transcriptome=${transcriptome_path} \
-	       --fastqs=${fastq_path} \
-	       --jobmode=sge \
-	       --indices=${bcs} \
-	       --maxjobs=8 \
-	       --mempercore=16 \
-	       #--uiport=3600
+${cellranger_path}/cellranger run --id=${id} \
+	       			  --transcriptome=${transcriptome_path} \
+	                          --fastqs=${fastq_path} \
+	                          --jobmode=sge \
+	       			  --indices=${bcs} \
+	       			  --maxjobs=8 \
+	       			  --mempercore=16 \
+	       			 #--uiport=3600
 				       	
 			
 	
