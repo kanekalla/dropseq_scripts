@@ -3,8 +3,8 @@
 #$ -q long
 #$ -P regevlab
 #$ -l m_mem_free=16g
-#$ -e error.err
-#$ -o out.log
+#$ -e qsub_logs/demult.err
+#$ -o qsub_logs/demult.log
 
 source /broad/software/scripts/useuse
 reuse -q .bcl2fastq2-2.17.1.14
