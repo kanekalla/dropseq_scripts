@@ -12,11 +12,11 @@ cellranger_path=/seq/regev_genome_portal/SOFTWARE/10X/cellranger-1.1.0/
 
 # Automatically defined
 n=`expr ${#run_ids[@]} - 1`
-fastq_path=`basename $bcl_path | cut -f 4 -d'_'`
-fastq_path=./${fastq_path/A/}/outs/fastq_path
+fastq_path0=`basename $bcl_path | cut -f 4 -d'_'`
+fastq_path=./${fastq_path0/A/}/outs/fastq_path
 
 # cell ranger demux
-sed "s|path_to_bcl|${bcl_path}|g;s|path_to_cellranger|${cellranger_path}|g" < /home/unix/karthik/repo/dropseq_scripts/10X/run_10X.sh > run_10X_${fastq_path/A/}.sh
+sed "s|path_to_bcl|${bcl_path}|g;s|path_to_cellranger|${cellranger_path}|g" < /home/unix/karthik/repo/dropseq_scripts/10X/demux_10X.sh > demux_10X_${fastq_path0/A/}.sh
 
 # cell ranger run
 for ((i==0; i<=$n; i++)
