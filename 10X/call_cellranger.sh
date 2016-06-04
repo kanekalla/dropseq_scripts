@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Wrapper script for 10X pipeline
+mkdir -p qsub_logs
 
 # To Change 
 run_ids=("P17_Retina1" "P17_Retina2")
