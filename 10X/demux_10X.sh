@@ -8,6 +8,7 @@
 
 source /broad/software/scripts/useuse
 reuse -q .bcl2fastq2-2.17.1.14
+reuse UGER
 cellranger_path=path_to_cellranger
 bclPath=path_to_bcl
 
