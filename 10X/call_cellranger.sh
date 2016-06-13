@@ -19,7 +19,7 @@ fastq_path=./${fastq_path0/A/}/outs/fastq_path
 sed "s|path_to_bcl|${bcl_path}|g;s|path_to_cellranger|${cellranger_path}|g" < /home/unix/karthik/repo/dropseq_scripts/10X/demux_10X.sh > demux_10X_${fastq_path0/A/}.sh
 
 # cell ranger run
-for ((i==0; i<=$n; i++)
+for ((i==0; i<=$n; i++))
 do
   run_id=${run_ids[$i]}
   barcode=${bcs[$i]}
