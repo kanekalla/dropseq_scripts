@@ -8,6 +8,7 @@
 
 
 source /broad/software/scripts/useuse
+reuse UGER
 
 # Variables defined by wrapper script
 cellranger_path=path_to_cellranger
