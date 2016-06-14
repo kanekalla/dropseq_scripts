@@ -5,6 +5,8 @@
 # usage : ./install_gtf_annot.sh
 
 # required arguments
+tophatPath=/seq/regev_genome_portal/SOFTWARE/tophat2/current
+rsemPath=/seq/regev_genome_portal/SOFTWARE/BIN
 genome_fasta=/path/to/genome.fasta
 gtf=/path/to/gtf
 annot_name=name
@@ -62,17 +64,23 @@ fi
 mkdir -p ./tmp
 cp ~/repo/dropseq_scripts/build_rnaseq_ref/*fq ./tmp/
 
-if [ -n "$just" ] && [ $just == "rsem"]
+if [ -n "$just" ] && [ $just == "rsem" ]
 then
     echo "Not running tophat"
 else
-    tophat2 -G ${dest_annot_file} -T --transcriptome-index ${annot_install_dir}/tophat_trans_index -o ./tmp/$$.tophat.out ${genome_fasta} ./tmp/tmp.left.fq ./tmp/tmp.right.fq
+    ${tophatPath}/tophat2 -G ${dest_annot_file} -T --transcriptome-index ${annot_install_dir}/tophat_trans_index -o ./tmp/$$.tophat.out ${genome_fasta} ./tmp/tmp.left.fq ./tmp/tmp.right.fq
+fi
 
 ####################
 ## Prep for RSEM
 ####################
 
-
+if [ -n "just "] && [ $just == "tophat" ]
+then 
+    echo "Not running rsem"
+else
+    ${rsemPath}/rsem-prepare-reference --gtf ${dest_annot_file} --transcript-to-gene-map ${gene_iso_map_file} ${genome_fasta} ${annot_install_dir}/rsem_trans_index
+fi    
 
     
 
