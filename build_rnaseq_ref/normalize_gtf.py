@@ -55,7 +55,11 @@ def insert_gene_name( gtf_file ):
             token_list_coupled = feature_row[-1].split(SPLIT_TOKENS)
             
             #Loop to split on each token pair and append to order list
+<<<<<<< HEAD
             #Also store the token pair in genid as key val
+=======
+            #Also store the token pair in genid as key vafeatl
+>>>>>>> eb53776a052420a1e91f2b8e5ba921b9d29c495a
             for token_couple in token_list_coupled:
                 token, token_value = token_couple.split(SPLIT_COUPLE)
                 gene_id_order_list.append(token)
@@ -99,4 +103,8 @@ if __name__ == "__main__":
    arg_raw.add_argument( "--output_gtf_path", help="Output GTF file path." )
    args_parsed = arg_raw.parse_args( )
    recontructed_feature_list = insert_gene_name( args_parsed.gtf_file )
+<<<<<<< HEAD
    write_to_file( recontructed_feature_list, args_parsed.output_gtf_path )   
+=======
+   write_to_file( recontructed_feature_list, args_parsed.output_gtf_path ) 
+>>>>>>> eb53776a052420a1e91f2b8e5ba921b9d29c495a
