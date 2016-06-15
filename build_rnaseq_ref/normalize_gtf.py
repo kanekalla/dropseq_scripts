@@ -7,8 +7,6 @@ Insert gene name if it doesn't exist for a feature.
 
 import argparse
 import os
-import sciedpiper.Command as Command
-import sciedpiper.ParentScript as ParentScript
 import csv
 
 __author__ = "Asma Bankapur"
@@ -57,7 +55,7 @@ def insert_gene_name( gtf_file ):
             token_list_coupled = feature_row[-1].split(SPLIT_TOKENS)
             
             #Loop to split on each token pair and append to order list
-            #Also store the token pair in genid as key val
+            #Also store the token pair in genid as key vafeatl
             for token_couple in token_list_coupled:
                 token, token_value = token_couple.split(SPLIT_COUPLE)
                 gene_id_order_list.append(token)
