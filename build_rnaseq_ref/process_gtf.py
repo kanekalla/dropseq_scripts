@@ -1,7 +1,7 @@
 #!/usr/bin/env python 
 
-
-# Karthik Shekhar
+# created by : Asma Bankapur
+# modified by : Karthik Shekhar
 
 # The following program will read in a gtf file and create a txt file with gene and isoform names as two columns
 
