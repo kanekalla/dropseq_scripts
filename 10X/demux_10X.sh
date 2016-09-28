@@ -2,7 +2,7 @@
 #$ -cwd
 #$ -q long
 #$ -P regevlab
-#$ -l m_mem_free=16g
+#$ -l h_vmem=16g
 #$ -e qsub_logs/demult.err
 #$ -o qsub_logs/demult.log
 
