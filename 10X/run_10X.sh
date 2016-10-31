@@ -3,6 +3,7 @@
 #$ -cwd
 #$ -q long
 #$ -P regevlab
+#$ -l h_vmem=50g
 #$ -e qsub_logs/error.err
 #$ -o qsub_logs/out.log
 
